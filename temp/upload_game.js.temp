@@ -1,0 +1,28 @@
+net = Npm.require('net')
+
+var sockets = [];
+
+
+var s = net.Server(function (socket) {
+
+    sockets.push(socket);
+
+    socket.on('data', function (msg_sent) {
+    	
+    	msg_sent = '' + msg_sent;
+    	if (msg_sent.substring(0,4)=='logi') {
+    		socket.write("autentification");
+    	} else {
+    		socket.write("fail");
+    	}
+    	
+    	
+    });
+
+    socket.on('end', function () {
+        var i = sockets.indexOf(socket);
+        sockets.splice(i, 1);
+    });
+	});
+
+s.listen(1717);
