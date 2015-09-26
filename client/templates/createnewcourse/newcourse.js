@@ -78,7 +78,8 @@ Template.newcoursehole.helpers({
       return {
       	mapTypeId: google.maps.MapTypeId.HYBRID,
         center: new google.maps.LatLng(4.407145, 102.203006),
-        zoom: 6
+        zoom: 6,
+        disableDoubleClickZoom: true
       };
     }
   }
@@ -89,7 +90,7 @@ Template.newcoursehole.helpers({
 
 Template.newcoursehole.onCreated(function() {  
   GoogleMaps.ready('addhole', function(map) {
-     google.maps.event.addListener(map.instance, 'rightclick', function(event) {
+     google.maps.event.addListener(map.instance, 'dblclick', function(event) {
       	var holetoadd =Session.get('holetoadd');
       	var coursestocke =Session.get('courseStocke');
       	var instruc = Session.get('instruction');
