@@ -1,5 +1,58 @@
 <template name="messagesList">
+  <div class="posts" >
+  	<a href="{{pathFor 'messageNew'}}" class="discuss btn btn-default">New Message</a>
+  	{{#each messages}}
+      {{> messageItem}}
+    {{/each}}
+  </div>
+</template>
+
+
+<template name="messageItem">
+  <div class="post">
+    <div class="post-content">
+      <h3><a href="{{pathFor 'readMessage'}}">{{title}}</a><span>From: {{author}} To: {{receiver}}</span></h3>
+    </div>
+  </div>
+</template>
+
+
+<template name="readMessage">
+  <div class="post-page page">
+  	<div class="post-content">
+    <h3>{{title}}<span> From: {{author}} To: {{receiver}}</span></h3>
+    </div>
+    <p>{{body}}</p>
+
+  </div>
+</template>
+
+
+
+
+<template name="messageNew">
   <div class="posts">
-  	<p>Messages</p>
+  	<form name="comment" class="comment-form form">
+    <div class="form-group">
+      <div class="controls">
+        <label for="receiver">To:</label>
+        <input name="receiver" id="receiver" class="form-control" type="text">
+      </div>
+	</div>
+    <div class="form-group">
+      <div class="controls">
+        <label for="title">Message Title:</label>
+        <input name="title" id="title" class="form-control" type="text">
+      </div>
+	</div>
+    <div class="form-group">
+      <div class="controls">
+        <label for="body">Message:</label>
+        <textarea name="body" id="body" class="form-control" rows="3"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Post Message</button>
+  </form>
+
   </div>
 </template>

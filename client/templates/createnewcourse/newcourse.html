@@ -1,0 +1,56 @@
+<template name="newcourse">
+  {{> Template.dynamic template=whichOne}}
+</template>
+
+
+<template name="newcoursedata">
+  <div class="posts">
+  		<h1>Add new course </h1>
+	  	<form name="addcourse" class="comment-form form" id='form1'>
+	    <div class="form-group">
+	      <div class="controls">
+	        <label for="name">Name of the course:</label>
+	        <input name="name" id="name" class="form-control" type="text">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <div class="controls">
+	        <label for="country">Country:</label>
+	        <select name="country" id="country" class="form-control">
+	        	<option>France</option>
+	        	<option>Malaysia</option>
+	        	<option>England</option>
+	        	<option>Thailand</option>
+	        	<option>Indonesia</option>
+	        </select>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <div class="controls">
+	        <label for="city">City:</label>
+	        <input name="city" id="city" class="form-control" type="text">
+	      </div>
+	    </div>
+	    <label>Nb. of hole:</label>
+	    <div class="form-group">
+	    <label class="radio-inline"><input type="radio" name="optradio" value="9">9 holes</label>
+		<label class="radio-inline"><input type="radio" name="optradio" value="18">18 holes</label>  
+		</div>  	    
+	    <button type="submit" class="btn btn-primary">Next Step</button>
+ 	    </form>
+
+
+  </div>
+</template>
+
+
+<template name="newcoursehole">
+  <div class="posts">
+  	<h3>{{coursename}} Course</h3>
+  	<h4>Add hole nb. {{holenb}}:</h4>
+  	<p>Please right click on hole nb. {{holenb}} {{instruction}} </p>
+  <div class="map-container">
+    {{> googleMap name="addhole" options=addholeOptions}}
+  </div>
+  </div>
+</template>

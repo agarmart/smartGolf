@@ -1,13 +1,24 @@
 <template name="header">
   <header>
-    <a href="{{pathFor 'postsList'}}">
+    <a href="{{pathFor 'dashboard'}}">
      <img src="title.png" alt="SmartGolf" height="130" width="600">
     </a>
     <div style="float:right;">
       <div class="loginbox">
         {{#if currentUser}}<p class="welcome">Welcome</p>{{/if}}
         {{> loginButtons}}
-        {{#if currentUser}}<p class="header">You have {{messagesCount}} message(s)</p>{{/if}}
+        {{#if currentUser}}
+        {{#if messageisnonzero}}
+        <p class="header">You have <a href="{{pathFor 'messagesList'}}">{{messagesCount}} message(s)</a></p>
+        {{else}}
+        <p class="header">You have <a href="{{pathFor 'messagesList'}}">{{messagesCount}} message(s)</a></p>
+        {{/if}}
+        {{#if gamestouploadisnonzero}}
+        <p class="header">You have <a href="{{pathFor 'gamesToUpload'}}">{{gamestouploadCount}} game(s) to upload</a></p>
+        {{else}}
+        <p class="header">You have {{gamestouploadCount}} game to upload</p>
+        {{/if}}
+        {{/if}}
       </div>
     </div>
   </header>
@@ -22,16 +33,23 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
        {{#if currentUser}}<ul class="nav navbar-nav navbar-left">
-       <li><a href="#">Dashboard</a></li>
+       <li><a href="{{pathFor 'dashboard'}}">Dashboard</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="#">Explore your games</a></li>
+        <li><a href="{{pathFor 'games'}}">Explore your games</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="#">Statistics</a></li>
+        <li><a href="{{pathFor 'stats'}}">Statistics</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Manage my account</a></li>
+        <li class="dropdown" data-dropdown="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Manage my account <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+              <li><a href="#">Edit Profile</a></li>
+              <li class="divider"></li>
+              <li><a href="{{pathFor 'newcourse'}}">Add new course</a></li>
+          </ul>
+        </li>
       </ul>
       {{else}}
       <ul class="nav navbar-nav navbar-left">
