@@ -16,3 +16,6 @@ The functionnality will be:
 -Possibility to display your own and friends game on a map using Google map API.
 -Get intensive statistics about your own game.
 -Voice Caddy during the game.
+
+
+MIT licence
